@@ -3,9 +3,10 @@ pipeline {
     tools {
         maven 'maven'
     }
-//    options {
+    options {
 //        skipDefaultCheckout(true)
-//    }
+        parallelsAlwaysFailFast()
+    }
     stages {
 //        stage('Checkout') {
 //            steps {
@@ -22,7 +23,6 @@ pipeline {
                 sh 'mvn clean test'
             }
         }
-        failFast true
         parallel {
             stage('Acceptance Testing') {
                 stages {
@@ -46,8 +46,10 @@ pipeline {
             }
         }
         stage('Results') {
-            junit '**/target/surefire-reports/TEST-*.xml'
-            archiveArtifacts 'target/*.jar'
+            steps {
+                junit '**/target/surefire-reports/TEST-*.xml'
+                archiveArtifacts 'target/*.jar'
+            }
         }
     }
 }
