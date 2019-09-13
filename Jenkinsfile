@@ -16,11 +16,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -DskipTests=true clean package'
+                archiveArtifacts 'target/*.jar'
             }
         }
         stage('Test') {
             steps {
                 sh 'mvn clean test'
+                junit '**/target/surefire-reports/TEST-*.xml'
             }
         }
         stage('Parallel Testing') {
@@ -53,12 +55,6 @@ pipeline {
                         }
                     }
                 }
-            }
-        }
-        stage('Results') {
-            steps {
-                junit '**/target/surefire-reports/TEST-*.xml'
-                archiveArtifacts 'target/*.jar'
             }
         }
     }
