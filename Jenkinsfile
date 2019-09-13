@@ -35,11 +35,6 @@ pipeline {
                         stage('Acceptance Testing') {
                             steps {
                                 echo 'Acceptance Testing'
-                                script {
-                                    def time = 60
-                                    echo "Waiting 60 seconds for deployment to complete prior starting smoke testing"
-                                    sleep time.toInteger() // seconds
-                                }
                             }
                         }
                     }
@@ -54,11 +49,6 @@ pipeline {
                         stage('Performance Testing') {
                             steps {
                                 echo 'Performance Testing'
-                                script {
-                                    def time = 60
-                                    echo "Waiting 60 seconds for deployment to complete prior starting smoke testing"
-                                    sleep time.toInteger() // seconds
-                                }
                             }
                         }
                     }
