@@ -5,7 +5,6 @@ pipeline {
     }
     options {
         skipDefaultCheckout(true)
-        sk
     }
     stages {
 //        stage('Checkout') {
