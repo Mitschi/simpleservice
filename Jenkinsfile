@@ -1,11 +1,11 @@
 pipeline {
     agent any
-//    tools {
-//        maven 'maven'
-//    }
-    options {
-        skipDefaultCheckout(true)
+    tools {
+        maven 'maven'
     }
+//    options {
+//        skipDefaultCheckout(true)
+//    }
     stages {
 //        stage('Checkout') {
 //            steps {
@@ -22,7 +22,6 @@ pipeline {
                 sh 'mvn clean test'
             }
         }
-
     }
 }
 
