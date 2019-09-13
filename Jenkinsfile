@@ -18,6 +18,24 @@ node {
          }
       }
    }
+   stage("Unit Testing") {
+      echo 'Unit Testing'
+   }
+
+   stage('Deploy to Acceptance Testing Env') {
+      echo 'Deploy Acceptance Testing'
+   }
+   stage ('Acceptance Testing') {
+      echo 'Acceptance Testing'
+   }
+
+   stage('Deploy to Performance Testing Env') {
+      echo 'Deploy Performance Testing'
+   }
+   stage ('Performance Testing') {
+      echo 'Performance Testing'
+   }
+
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archiveArtifacts 'target/*.jar'
