@@ -28,20 +28,28 @@ pipeline {
                 stage('Acceptance Testing') {
                     stages {
                         stage('Deploy to Acceptance Testing Env') {
-                            echo 'Deploy Acceptance Testing'
+                            steps {
+                                echo 'Deploy Acceptance Testing'
+                            }
                         }
                         stage('Acceptance Testing') {
-                            echo 'Acceptance Testing'
+                            steps {
+                                echo 'Acceptance Testing'
+                            }
                         }
                     }
                 }
                 stage('Performance Testing') {
                     stages {
                         stage('Deploy to Performance Testing Env') {
-                            echo 'Deploy Performance Testing'
+                            steps {
+                                echo 'Deploy Performance Testing'
+                            }
                         }
                         stage('Performance Testing') {
-                            echo 'Performance Testing'
+                            steps {
+                                echo 'Performance Testing'
+                            }
                         }
                     }
                 }
