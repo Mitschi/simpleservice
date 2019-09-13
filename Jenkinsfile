@@ -3,17 +3,27 @@ pipeline {
     tools {
         maven 'maven'
     }
+    options {
+        skipDefaultCheckout(true)
+        sk
+    }
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Mitschi/simpleservice.git'
-            }
-        }
+//        stage('Checkout') {
+//            steps {
+//                git 'https://github.com/Mitschi/simpleservice.git'
+//            }
+//        }
         stage('Build') {
             steps {
                 sh 'mvn -DskipTests=true clean package'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
+
     }
 }
 
@@ -40,6 +50,7 @@ pipeline {
 //            echo 'Unit Testing'
 //        }
 //
+//failFast true
 //        parallel {
 //            stage('Acceptance Testing') {
 //                stages {
