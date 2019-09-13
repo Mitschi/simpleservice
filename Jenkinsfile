@@ -23,24 +23,26 @@ pipeline {
                 sh 'mvn clean test'
             }
         }
-        parallel {
-            stage('Acceptance Testing') {
-                stages {
-                    stage('Deploy to Acceptance Testing Env') {
-                        echo 'Deploy Acceptance Testing'
-                    }
-                    stage('Acceptance Testing') {
-                        echo 'Acceptance Testing'
+        stage('Parallel Testing') {
+            parallel {
+                stage('Acceptance Testing') {
+                    stages {
+                        stage('Deploy to Acceptance Testing Env') {
+                            echo 'Deploy Acceptance Testing'
+                        }
+                        stage('Acceptance Testing') {
+                            echo 'Acceptance Testing'
+                        }
                     }
                 }
-            }
-            stage('Performance Testing') {
-                stages {
-                    stage('Deploy to Performance Testing Env') {
-                        echo 'Deploy Performance Testing'
-                    }
-                    stage('Performance Testing') {
-                        echo 'Performance Testing'
+                stage('Performance Testing') {
+                    stages {
+                        stage('Deploy to Performance Testing Env') {
+                            echo 'Deploy Performance Testing'
+                        }
+                        stage('Performance Testing') {
+                            echo 'Performance Testing'
+                        }
                     }
                 }
             }
